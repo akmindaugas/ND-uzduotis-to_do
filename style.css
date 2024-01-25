@@ -17,3 +17,23 @@
     background-color: cadetblue;
 
 }
+/* #cardWrapper{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid red;
+} */
+.inputCardClass{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: auto;
+text-align: center;
+    border: 2px solid red;
+    padding-top: 2rem;
+}
+.circle{
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    border: 2px solid black;
+}
