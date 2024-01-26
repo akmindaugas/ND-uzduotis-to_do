@@ -37,3 +37,15 @@ text-align: center;
     border-radius: 60px;
     border: 2px solid black;
 }
+.task-completes{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: green;
+}
+.task-not-completed{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: red;
+}

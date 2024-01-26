@@ -6,6 +6,12 @@ const input = document.getElementById('inputId');
 const input1 = document.getElementById('inputId_1');
 const input2 = document.getElementById('inputId_2');
 
+// kreipiames i local storage duomenu--ir juos parsiname atgal i objeta-----------
+const localStorageTasks = JSON.parse(localStorage.getItem("element"));
+// -----isikeliame reiksmes kadangi  array (po refresho) yra tuscias (null)------
+// let tasks = localStorageTasks;
+
+
 // const objCard = document.createElement('div');
 
 // --------GAUNAME DUOMENIS I MASYVA--------
@@ -26,14 +32,17 @@ if(dataFromInput.inputValue.length <3){
 // ----DUOMENYS KAUPIAMI ARCHYVE-----------
     array.push(dataFromInput);
 console.log(array);
+//  - pridedame taska i local storage, o kadangi objekto masyvo negalima prideti, dedame JASON----------tikrinti--NEVEIKIA-----------------------------------------------------------
+localStorage.setItem('dataFromInput', JSON.stringify(input));
 // ---NUNULINAME INPUT VERTES -----------
 input.value =""; 
 input1.value = "";  
 input2.value = ""; 
-// --------NUNULINAME PACIA KORTELE----------
+// --------NUNULINAME PACIA KORTELE---po ko visos korteles sugeneruojamos is naujo-------
 cardWrapper.innerHTML = "";
 // --------APDIRBAME DUOMENIS FOREACH CIKLU-------
-array.forEach((element) => {
+// --------11uzduotis, apsukame masyva----(galima ta pati atlikti flex.revers csse arba ne pushinant, o unshiftinti---------
+[...array].reverse().forEach((element) => {
 // --------KIEKVIENAM ELEMENTUI SUKURIAME KORTELE---
 const inputCard = document.createElement('div');
 inputCard.classList.add("class", "inputCardClass");
@@ -43,9 +52,15 @@ console.log(inputCard);
 inputCard.addEventListener('click', ()=> {
 const index = array.findIndex((inputElement)=>{
 return inputElement.title === input.title;
-
+// --10 uzduotis, tikrinti___________________________
+console.log(input.title);
 //------------tikriname statusa---------------
 dataFromInput[index].isDone = !dataFromInput[index].isDone;
+
+// /---istriname kortele is ekrano------
+inputCards.innerHTML= "";
+// iskvieciame funkcija, kur is naujo sugeneruoja korteles (kreipinys i esame funkcija---)
+// generateCards()
 });});
 
 // ------ KORTELE UZPILDOME DUOMENIMIS--------
@@ -61,15 +76,15 @@ statusOfTask.innerText = element.isDone ? "Done" : "in Progress";
 // ---------SIGNALINE LEMPUTE STATUSUI----------
 const signal = document.createElement('div');
 signal.setAttribute("id", "circle");
+// --------tenerio operatoriaus pagalba priskiriame viena arba kita klase!!!!!!!--------
+signal.setAttribute('class', input.isDone ? 'task-completed': 'task-not-completed');
 
-if(dataFromInput.isDone ==='false'){
-    signal.setAttribute("style", "background-color: red");
-}else{
-    signal.setAttribute("style", "background-color: green");
-};
-
-
-
+///--------PASITIKRINTI VEIKIMA?????????????????????????
+// if(dataFromInput.isDone ==='false'){
+//     signal.setAttribute("style", "background-color: red");
+// }else{
+//     signal.setAttribute("style", "background-color: green");
+// };
 // ----------DUOMENIS SUDEDAME I KORTELE--------
 inputCard.append(inputContent);
 inputCard.append(inputContent1);
