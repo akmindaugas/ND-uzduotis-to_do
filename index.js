@@ -35,7 +35,7 @@ if(dataFromInput.inputValue.length <3){
     array.push(dataFromInput);
 console.log(array);
 //  - pridedame taska i local storage, o kadangi objekto masyvo negalima prideti, dedame JASON----------tikrinti--NEVEIKIA-----------------------------------------------------------
-localStorage.setItem('dataFromInput', JSON.stringify(input));
+localStorage.setItem('dataFromInput', JSON.stringify(array));
 // ---NUNULINAME INPUT VERTES -----------
 input.value =""; 
 input1.value = "";  
@@ -53,17 +53,19 @@ console.log(inputCard);
 // -------FOREACHO METU KIEKVIENAM DIVUI PRISKIRIAME EVENTLISTNERI---
 inputCard.addEventListener('click', ()=> {
 const index = array.findIndex((inputElement)=>{
-return inputElement.title === input.title;
+return inputElement.inputValue === input.inputValue;
 // --10 uzduotis, tikrinti___________________________
-console.log(input.title);
+console.log(element.inputValue);
 //------------tikriname statusa---------------
-dataFromInput[index].isDone = !dataFromInput[index].isDone;
+array[index].isDone = !array[index].isDone;
 
 // /---istriname kortele is ekrano------
-inputCards.innerHTML= "";
+cardWrapper.innerHTML= "";
 // iskvieciame funkcija, kur is naujo sugeneruoja korteles (kreipinys i esame funkcija---)
-// generateCards()
-});});
+// array.forEach((element) =>{
+// });
+});
+});
 
 // ------ KORTELE UZPILDOME DUOMENIMIS--------
 //--------"element" NURODANT KELIA IKI DUOMENU, LEIDZIA PASIEKTI DUOMENYS UZ CIKLO RIBU!-----------------------------------------
