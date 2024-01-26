@@ -9,7 +9,9 @@ const input2 = document.getElementById('inputId_2');
 // kreipiames i local storage duomenu--ir juos parsiname atgal i objeta-----------
 const localStorageTasks = JSON.parse(localStorage.getItem("element"));
 // -----isikeliame reiksmes kadangi  array (po refresho) yra tuscias (null)------
-// let tasks = localStorageTasks;
+let tasks = localStorageTasks || [];
+// ---jeigu istrinsime localstorage ir gausime null, tai mes klaida: nullas nesiforeachina--
+// eilute auksciau istaiso klaida: jeigu ateina null, jam priskiria tuscia masyva. operatrius "||"-----tikrinti operatoriu----
 
 
 // const objCard = document.createElement('div');
